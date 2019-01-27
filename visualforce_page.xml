@@ -1,0 +1,18 @@
+<apex:page controller="Api2PdfController" tabstyle="lead">
+   <apex:pageBlock >
+      <apex:form >
+        
+         <p><strong>PDF Url:</strong></p>
+         <p><apex:outputText >{!PdfUrl}</apex:outputText></p>
+         
+         <br />
+         <apex:commandButton action="{!headlessChromeFromHtml}" value="headlessChromeFromHtml"/>
+         <apex:commandButton action="{!wkhtmlToPdfFromHtml}" value="wkhtmlToPdfFromHtml"/>
+         <apex:commandButton action="{!wkhtmlToPdfFromHtmlWithOptions}" value="wkhtmlToPdfFromHtmlWithOptions"/>
+         <apex:commandButton action="{!wkhtmlToPdfFromUrl}" value="wkhtmlToPdfFromUrl"/>
+         <apex:commandButton action="{!wkhtmlToPdfFromUrlWithOptions}" value="wkhtmlToPdfFromUrlWithOptions"/>
+         <apex:commandButton action="{!libreofficeConvert}" value="libreofficeConvert"/>
+         <apex:commandButton action="{!mergePdf}" value="mergePdf"/>
+      </apex:form>
+   </apex:pageBlock>
+</apex:page>
