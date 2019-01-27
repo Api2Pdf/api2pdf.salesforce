@@ -5,9 +5,8 @@ public class Api2PdfControllerTests {
       
         Api2PdfController controller = new Api2PdfController ();
        
-        Api2PdfResponse response = controller.headlessChromeFromHtml();
+        controller.headlessChromeFromHtml();
 
-        // Verify that the success page displays
-        System.assertNotEquals(response.getPdf(), '');
+        System.assertNotEquals(controller.PdfUrl, '');
     }
 }

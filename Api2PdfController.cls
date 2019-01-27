@@ -1,6 +1,6 @@
 public with sharing class Api2PdfController {
     
-    Api2PdfClient a2pClient = new Api2PdfClient('API-PDF-KEY');
+    Api2PdfClient a2pClient = new Api2PdfClient('YOUR-API-KEY');
 
     public String PdfUrl {get;set;}
 

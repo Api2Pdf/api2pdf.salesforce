@@ -38,69 +38,76 @@ public class Api2PdfClient{
 
     public Api2PdfResponse libreofficeConvert(String officeFileUrl, boolean inlinePdf, String fileName){
         HttpRequest req = getRequest(API2PDF_LIBREOFFICE_CONVERT);
-        String payload = '{\'url\':\'' + officeFileUrl + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\'}';
+        Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
+        model.Url = officeFileUrl;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
     
-    public Api2PdfResponse mergePdf(String[] firstPdfUrls, boolean inlinePdf, String fileName)  {
+    public Api2PdfResponse mergePdf(String[] pdfUrls, boolean inlinePdf, String fileName)  {
         HttpRequest req = getRequest(API2PDF_MERGE);
-        String urls = '';
-        for (String item : firstPdfUrls) {
-            urls += '\'' + item + '\', ';
-        }
-        urls = urls.removeEnd(', ');
-
-        String payload = '{\'urls\':[ ' + urls + '],\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName + '\'}';
+        Api2PdfMergeRequestModel model = new Api2PdfMergeRequestModel();
+        model.Urls = pdfUrls;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
     
     public Api2PdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName)  {
         HttpRequest req = getRequest(API2PDF_WKHTMLTOPDF_HTML);
-        String payload = '{\'html\':\'' + html + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\'}';
+        Api2PdfFromHtmlRequestModel model = new Api2PdfFromHtmlRequestModel();
+        model.Html = html;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
     public Api2PdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName, Map<String, String> options)  {
         HttpRequest req = getRequest(API2PDF_WKHTMLTOPDF_HTML);
-        String optionsPayload = '';
-        for (String key : options.keySet()) {
-            optionsPayload += '\'' + key + '\':\'' + options.get(key) + '\', ';
-        }
-       
-        optionsPayload = optionsPayload.removeEnd(', ');
-        String payload = '{\'html\':\'' + html + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\', \'options\':{ ' + optionsPayload + '}}';
+        Api2PdfFromHtmlRequestModel model = new Api2PdfFromHtmlRequestModel();
+        model.Html = html;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        model.Options = options;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
     
     public Api2PdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName)  {
         HttpRequest req = getRequest(API2PDF_WKHTMLTOPDF_URL);
-        String payload = '{\'url\':\'' + url + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName + '\'}';
+        Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
+        model.Url = url;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
-    public Api2PdfResponse wkhtmlToPdfFromUrl(String html, boolean inlinePdf, String fileName, Map<String, String> options)  {
+    public Api2PdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName, Map<String, String> options)  {
         HttpRequest req = getRequest(API2PDF_WKHTMLTOPDF_URL);
-        String optionsPayload = '';
-        for (String key : options.keySet()) {
-            optionsPayload += '\'' + key + '\':\'' + options.get(key) + '\', ';
-        }
-       
-        optionsPayload = optionsPayload.removeEnd(', ');
-        String payload = '{\'html\':\'' + html + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\', \'options\':{ ' + optionsPayload + '}}';
+        Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
+        model.Url = url;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        model.options = options;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
 
     public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName)  {
         HttpRequest req = getRequest(API2PDF_CHROME_HTML);
-        String payload = '{\'html\':\'' + html + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\'}';
+        Api2PdfFromHtmlRequestModel model = new Api2PdfFromHtmlRequestModel();
+        model.Html = html;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
@@ -108,33 +115,35 @@ public class Api2PdfClient{
     public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName, Map<String, String> options)  {
         HttpRequest req = getRequest(API2PDF_CHROME_HTML);
         String optionsPayload = '';
-        for (String key : options.keySet()) {
-            optionsPayload += '\'' + key + '\':\'' + options.get(key) + '\', ';
-        }
-       
-        optionsPayload = optionsPayload.removeEnd(', ');
-        String payload = '{\'html\':\'' + html + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\', \'options\':{ ' + optionsPayload + '}}';
+        Api2PdfFromHtmlRequestModel model = new Api2PdfFromHtmlRequestModel();
+        model.Html = html;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        model.options = options;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
     
     public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName)  {
         HttpRequest req = getRequest(API2PDF_CHROME_URL);
-        String payload = '{\'url\':\'' + url + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName + '\'}';
+        Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
+        model.Url = url;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 
     
     public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName, Map<String, String> options)  {
         HttpRequest req = getRequest(API2PDF_CHROME_URL);
-        String optionsPayload = '';
-        for (String key : options.keySet()) {
-            optionsPayload += '\'' + key + '\':\'' + options.get(key) + '\', ';
-        }
-        optionsPayload = optionsPayload.removeEnd(', ');
-        String payload = '{\'url\':\'' + url + '\',\'inlinePdf\':' + inlinePdf + ',\'fileName\':\'' + fileName
-                + '\', \'options\':{ ' + optionsPayload + '}}';
+        Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
+        model.Url = url;
+        model.InlinePdf = inlinePdf;
+        model.FileName = fileName;
+        model.options = options;
+        String payload = JSON.serialize(model);
         return makeRequest(payload, inlinePdf, fileName, req);
     }
 }
