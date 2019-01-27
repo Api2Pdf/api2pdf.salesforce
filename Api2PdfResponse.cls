@@ -98,8 +98,7 @@ public class Api2PdfResponse {
 	        this.mbIn = mbIn;
 	    }
 
-	    @Override
-	    public String toString()
+	    public override String toString()
 	    {
 	        return 'ClassPojo [responseId = '+responseId+', error = '+error+', mbOut = '+mbOut+', pdf = '+pdf+', success = '+success+', cost = '+cost+', mbIn = '+mbIn+']';
 	    }
