@@ -1,0 +1,13 @@
+<apex:page controller="Api2PdfSettingsController" tabstyle="lead">
+   <apex:pageBlock >
+      <apex:form >
+        
+         <p><strong>Api Key:</strong></p>
+         <p><apex:inputText value="{!ApiKey}" ></apex:inputText></p>
+         
+         <br />
+         <apex:commandButton action="{!saveApiKey}" value="Save"/>
+         
+      </apex:form>
+   </apex:pageBlock>
+</apex:page>

@@ -8,7 +8,7 @@ public class Api2PdfResponse {
 
         private String pdf;
 
-        private String success;
+        private Boolean success;
 
         private String cost;
 
@@ -63,13 +63,13 @@ public class Api2PdfResponse {
         }
 
         
-        public String getSuccess ()
+        public Boolean getSuccess ()
         {
             return success;
         }
 
        
-        public void setSuccess (String success)
+        public void setSuccess (Boolean success)
         {
             this.success = success;
         }
