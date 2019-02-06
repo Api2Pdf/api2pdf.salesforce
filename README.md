@@ -55,7 +55,7 @@ All usage starts by calling the import command and initializing the client by pa
 Once you initialize the client, you can make calls like so:
 
     Api2PdfResponse response = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf');
-    string PdfUrl = response.getPdf();
+    String PdfUrl = response.getPdf();
     
 ### Result Format
 
