@@ -55,7 +55,7 @@ All usage starts by calling the import command and initializing the client by pa
 Once you initialize the client, you can make calls like so:
 
     PdfResponse response = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf');
-    string PdfUrl = PdfResponse.getPdf();
+    string PdfUrl = response.getPdf();
     
 ### Result Format
 
@@ -83,13 +83,13 @@ Additional attributes include the total data usage in, out, and the cost for the
         Map<String, String> options = new Map<String, String>();
         options.put('orientation', 'landscape');
         options.put('pageSize', 'A4');
-        PdfResponse = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf', options);
-        PdfUrl= PdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf', options);
+        string PdfUrl= pdfResponse.getPdf();
 
 **Convert URL to PDF**
 
-     PdfResponse = a2pClient.wkhtmlToPdfFromUrl('https://www.google.com', true, 'test.pdf');
-     PdfUrl= pdfResponse.getPdf();
+     PdfResponse pdfResponse = a2pClient.wkhtmlToPdfFromUrl('https://www.google.com', true, 'test.pdf');
+     string PdfUrl= pdfResponse.getPdf();
     
 **Convert URL to PDF (use arguments for advanced wkhtmltopdf settings)**
 [View full list of wkhtmltopdf options available.](https://www.api2pdf.com/documentation/advanced-options-wkhtmltopdf/)
@@ -97,8 +97,8 @@ Additional attributes include the total data usage in, out, and the cost for the
     Map<String, String> options = new Map<String, String>();
         options.put('orientation', 'landscape');
         options.put('pageSize', 'A4');
-        PdfResponse = a2pClient.wkhtmlToPdfFromUrl('https://www.google.com', true, 'test.pdf', options);
-        PdfUrl= PdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.wkhtmlToPdfFromUrl('https://www.google.com', true, 'test.pdf', options);
+        string PdfUrl= pdfResponse.getPdf();
 
 
 ---
@@ -107,12 +107,8 @@ Additional attributes include the total data usage in, out, and the cost for the
 
 **Convert HTML to PDF**
 
-    $result = $apiClient->headlessChromeFromHtml('<p>Hello, World</p>');
-    
-**Convert HTML to PDF (load PDF in browser window and specify a file name)**
-
-    PdfResponse = a2pClient.headlessChromeFromHtml('<p>test</p>', true, 'test.pdf');
-    PdfUrl= PdfResponse.getPdf();
+    PdfResponse response = a2pClient.headlessChromeFromHtml('<p>test</p>', true, 'test.pdf');
+    string PdfUrl = response.getPdf();
     
 **Convert HTML to PDF (use arguments for advanced Headless Chrome settings)**
 [View full list of Headless Chrome options available.](https://www.api2pdf.com/documentation/advanced-options-headless-chrome/)
@@ -120,13 +116,13 @@ Additional attributes include the total data usage in, out, and the cost for the
     Map<String, String> options = new Map<String, String>();
         options.put('orientation', 'landscape');
         options.put('pageSize', 'A4');
-        PdfResponse = a2pClient.headlessChromeFromHtml('<p>test</p>', true, 'test.pdf', options);
-        PdfUrl= PdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.headlessChromeFromHtml('<p>test</p>', true, 'test.pdf', options);
+        string PdfUrl= pdfResponse.getPdf();
 
 **Convert URL to PDF**
         
-        PdfResponse = a2pClient.headlessChromeFromUrl('https://www.google.com', true, 'test.pdf');
-        PdfUrl= pdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.headlessChromeFromUrl('https://www.google.com', true, 'test.pdf');
+        string PdfUrl= pdfResponse.getPdf();
     
     
 **Convert URL to PDF (use arguments for advanced Headless Chrome settings)**
@@ -135,8 +131,8 @@ Additional attributes include the total data usage in, out, and the cost for the
    Map<String, String> options = new Map<String, String>();
         options.put('orientation', 'landscape');
         options.put('pageSize', 'A4');
-        PdfResponse = a2pClient.headlessChromeFromUrl('https://www.google.com', true, 'test.pdf', options);
-        PdfUrl= PdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.headlessChromeFromUrl('https://www.google.com', true, 'test.pdf', options);
+        string PdfUrl= pdfResponse.getPdf();
     
 ---
 
@@ -159,8 +155,8 @@ You must provide a URL to the file. Our engine will consume the file at that URL
 
 **Convert Microsoft Office Document or Image to PDF**
 
-    PdfResponse = a2pClient.libreofficeConvert('http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc', true, 'test.pdf');
-        PdfUrl= PdfResponse.getPdf();
+    PdfResponse pdfResponse = a2pClient.libreofficeConvert('http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc', true, 'test.pdf');
+        string PdfUrl= pdfResponse.getPdf();
     
 ---
     
@@ -173,8 +169,8 @@ To use the merge endpoint, supply a list of URLs to existing PDFs. The engine wi
     String[] urls = new List<String>();
         urls.add('http://www.orimi.com/pdf-test.pdf');
         urls.add('http://www.orimi.com/pdf-test.pdf');
-        PdfResponse = a2pClient.mergePdf(urls, true, 'test.pdf');
-        PdfUrl= PdfResponse.getPdf();
+        PdfResponse pdfResponse = a2pClient.mergePdf(urls, true, 'test.pdf');
+        string PdfUrl= pdfResponse.getPdf();
     
 
     
