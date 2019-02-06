@@ -75,7 +75,8 @@ Additional attributes include the total data usage in, out, and the cost for the
 
 **Convert HTML to PDF**
 
-    PdfResponse response = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf');    
+    PdfResponse pdfResponse = a2pClient.wkhtmlToPdfFromHtml('<p>test</p>', true, 'test.pdf');   
+    string pdfUrl = pdfResponse.getPdf();
     
 **Convert HTML to PDF (use arguments for advanced wkhtmltopdf settings)**
 [View full list of wkhtmltopdf options available.](https://www.api2pdf.com/documentation/advanced-options-wkhtmltopdf/)
